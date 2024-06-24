@@ -1,0 +1,31 @@
+@Component
+public class AdditionStrategy implements Strategy {
+    public int execute(int a, int b) {
+        return a + b;
+    }
+}
+
+@Component
+public class SubtractionStrategy implements Strategy {
+    public int execute(int a, int b) {
+        return a - b;
+    }
+}
+
+@Service
+public class Context {
+    private Strategy strategy;
+
+    @Autowired
+    public Context(@Qualifier("additionStrategy") Strategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void setStrategy(Strategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public int executeStrategy(int a, int b) {
+        return strategy.execute(a, b);
+    }
+}

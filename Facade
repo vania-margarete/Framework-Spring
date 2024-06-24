@@ -1,0 +1,26 @@
+public class Facade {
+    private SubSystemOne one;
+    private SubSystemTwo two;
+
+    public Facade() {
+        one = new SubSystemOne();
+        two = new SubSystemTwo();
+    }
+
+    public void operation() {
+        one.operationOne();
+        two.operationTwo();
+    }
+}
+
+class SubSystemOne {
+    public void operationOne() {
+        System.out.println("Subsystem One Operation");
+    }
+}
+
+class SubSystemTwo {
+    public void operationTwo() {
+        System.out.println("Subsystem Two Operation");
+    }
+}

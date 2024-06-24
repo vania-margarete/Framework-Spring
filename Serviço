@@ -1,0 +1,25 @@
+@Service
+public class ProdutoService {
+    private final ProdutoRepository produtoRepository;
+
+    @Autowired
+    public ProdutoService(ProdutoRepository produtoRepository) {
+        this.produtoRepository = produtoRepository;
+    }
+
+    public Produto salvar(Produto produto) {
+        return produtoRepository.save(produto);
+    }
+
+    public List<Produto> listarTodos() {
+        return produtoRepository.findAll();
+    }
+
+    public Produto buscarPorId(Long id) {
+        return produtoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Produto não encontrado"));
+    }
+
+    public void deletar(Long id) {
+        produtoRepository.deleteById(id);
+    }
+}

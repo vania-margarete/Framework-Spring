@@ -1,0 +1,30 @@
+@Service
+public class FacadeService {
+    private final SubSystemOne one;
+    private final SubSystemTwo two;
+
+    @Autowired
+    public FacadeService(SubSystemOne one, SubSystemTwo two) {
+        this.one = one;
+        this.two = two;
+    }
+
+    public void operation() {
+        one.operationOne();
+        two.operationTwo();
+    }
+}
+
+@Component
+class SubSystemOne {
+    public void operationOne() {
+        System.out.println("Subsystem One Operation");
+    }
+}
+
+@Component
+class SubSystemTwo {
+    public void operationTwo() {
+        System.out.println("Subsystem Two Operation");
+    }
+}
